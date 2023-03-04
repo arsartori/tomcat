@@ -10,5 +10,5 @@ ADD ./tomcat.keystore /opt/tomcat/conf/
 ADD ./enableSSL /opt/
 RUN sed -i '/<\/Engine>/ r /opt/enableSSL' /opt/tomcat/conf/server.xml
 WORKDIR /opt/tomcat
-EXPOSE 8080
+EXPOSE 8080 8443
 CMD ["/opt/tomcat/bin/catalina.sh","run"]
