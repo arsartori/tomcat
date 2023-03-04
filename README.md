@@ -17,7 +17,11 @@ To run build command, rename Dockerfile
 ## How to run it
 
 ```
-docker run -d --name tomcat -p 8080:8080 arsartori/tomcat:<version>
+Without SSL  
+docker run -d --name tomcat -p 8080:8080 arsartori/tomcat:<version>  
+
+With SSL  
+docker run -d --name tomcat -p 8080:8080 -p 8443:8443 arsartori/tomcat:<version>
 ```
 
 ## To access
