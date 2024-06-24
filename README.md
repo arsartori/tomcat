@@ -1,56 +1,18 @@
-# How to generate Tomcat Docker images 
+# Tomcat 
 
-## Clone repository
-```
-git clone https://github.com/arsartori/docker-tomcat.git
-```
+### Para criar o container Docker, executar o seguinte comando:
+	docker build -t tomcat:<versão> --build-arg VERSION=<versão> --build-arg VER=<versão> .
 
-## Change to directory version and build image
-```
-cd docker-tomcat/<version>
-docker build -t tomcat .  
+VERSION = Versão completa do Tomcat. Ex.: 8.0.58
+VER = Versão base do Tomcat. Ex.: 7, 8, 9, 10
 
-Version 7.0 have three versions: Alpine, Ubuntu and Debian.  
-To run build command, rename Dockerfile
-```
+### Para executar digite:
+	docker run -d --name tomcat -p 8080:8080 -p 8443:8443 tomcat:<version>  
 
-## How to run it
+### Para acessar a console
+	http://localhost:8080
 
-```
-Without SSL  
-docker run -d --name tomcat -p 8080:8080 arsartori/tomcat:<version>  
+	ou https://localhost:8443
 
-With SSL  
-docker run -d --name tomcat -p 8080:8080 -p 8443:8443 arsartori/tomcat:<version>
-```
-
-## To access
-
-```
-http://localhost:8080 or https://localhost:8443
-```
-
-## Publish webapp
-
-```
-docker cp path_to_webapp.war tomcat:/opt/tomcat/webapps
-```
-
-## Enable ROOT webapps
-
-```
-docker exec -i tomcat cp -r webapps.bak/ROOT /opt/tomcat/webapps
-```
-
-## Use local folder with volume
-
-```
-mkdir -p /opt/tomcat/webapps
-docker run -d --name tomcat -p 8080:8080 -p 8443:8443 -v /opt/tomcat/webapps:/opt/tomcat/webapps arsartori/tomcat:<version>
-```
-
-## Restore all webapps default
-The webapps default is moved to folder webapps.bak. For restore, copy from this folder to webapps.
-```
-docker exec -i tomcat mv webapps.dist/examples webapps/
-```
+### Para publicar uma aplicação 
+	docker cp path_to_webapp.war tomcat:/opt/tomcat/webapps
