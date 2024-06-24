@@ -9,5 +9,5 @@ RUN wget https://archive.apache.org/dist/tomcat/tomcat-$VER/v${VERSION}/bin/apac
     useradd -d /opt/tomcat -c 'Tomcat user' -m -s /bin/false tomcat && chown -R tomcat: /opt/tomcat && \
     chmod u+x /opt/tomcat/bin/*.sh
 WORKDIR /opt/tomcat
-EXPOSE 8080
+EXPOSE 8080 8443
 CMD ["/opt/tomcat/bin/catalina.sh","run"]
