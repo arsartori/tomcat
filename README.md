@@ -15,7 +15,7 @@
 	docker cp path_to_webapp.war tomcat:/opt/tomcat/webapps
 
 ### Para executar o container com Docker Compose
-	Version=8.5.100 docker compose up -d
+	docker compose up -d
 
 ### Para acessar o gerenciador do Tomcat, criar uma pasta e copiar os arquivos tomcat-users.xml e manager.xml e acessar com o usuário admin e senha admin.
 	mkdir -p /opt/docker/tomcat
