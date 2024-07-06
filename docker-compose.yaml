@@ -1,7 +1,7 @@
 services:
   tomcat:
     container_name: tomcat
-    image: tomcat:8.5.100
+    image: tomcat:9.0.90
     hostname: tomcat
     ports:
       - "8080:8080"
