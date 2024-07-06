@@ -1,12 +1,12 @@
-# Tomcat 9.0.90
+# Tomcat 10.0.27
 
 ## 1) Executar na forma de Docker container
 
 ### Para criar o container Docker, executar o seguinte comando:
-	docker build -t tomcat:9.0.90 .
+	docker build -t tomcat:10.0.27 .
 
 ### Para executar digite:
-	docker run -d --name tomcat -p 8080:8080 -p 8443:8443 tomcat:9.0.90  
+	docker run -d --name tomcat -p 8080:8080 -p 8443:8443 tomcat:10.0.27  
 
 ### Para acessar a console
 	http://localhost:8080
@@ -29,8 +29,8 @@
 ### Instalar JRE/OpenJDK e pacotes adicionais
 	apt update && apt install --no-install-recommends wget openjdk-8-jre -y && apt clean
 ### Baixar o pacote do Tomcat e instalar
-	wget https://archive.apache.org/dist/tomcat/tomcat-9/v9.0.90/bin/apache-tomcat-9.0.90.tar.gz -P /tmp && \
-	tar xf /tmp/apache-tomcat-9.0.90.tar.gz -C /opt && ln -s /opt/apache-tomcat-9.0.90 /opt/tomcat && \
+	wget https://archive.apache.org/dist/tomcat/tomcat-10/v10.0.27/bin/apache-tomcat-10.0.27.tar.gz -P /tmp && \
+	tar xf /tmp/apache-tomcat-10.0.27.tar.gz -C /opt && ln -s /opt/apache-tomcat-10.0.27 /opt/tomcat && \
 	chown -R tomcat: /opt/tomcat && chmod u+x /opt/tomcat/bin/*.sh
 ### Adicionar o serviço Tomcat
 	cp tomcat.service /etc/systemd/system/ && systemctl daemon-reload && \
