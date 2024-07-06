@@ -1,7 +1,7 @@
 services:
   tomcat:
     container_name: tomcat
-    image: tomcat:$Version
+    image: tomcat:10.1.7
     hostname: tomcat
     ports:
       - "8080:8080"
@@ -9,10 +9,3 @@ services:
     volumes:
       - /opt/docker/tomcat/tomcat-users.xml:/opt/tomcat/conf/tomcat-users.xml
       - /opt/docker/tomcat/manager.xml:/opt/tomcat/conf/Catalina/localhost/manager.xml
-    networks:
-      - net_prd
-
-networks:
-  net_prd:
-    name: net_prd
-    external: true
