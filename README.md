@@ -1,28 +1,20 @@
-# Tomcat 10.1.7
+# Tomcat 9
 
-## 1) Executar na forma de Docker container
-
-### Para criar o container Docker, executar o seguinte comando:
-	docker build -t tomcat:10.1.7 .
-
+### Para criar um container Docker, executar o seguinte comando (alterar a versão desejada):
+	docker build -t tomcat:9.0.90 --build-arg VERSION=9.0.90 .
 ### Para executar digite:
-	docker run -d --name tomcat -p 8080:8080 -p 8443:8443 tomcat:10.1.7 
-
+	docker run -d --name tomcat -p 8080:8080 -p 8443:8443 tomcat:9.0.90
 ### Para acessar a console
 	http://localhost:8080
-
 ### Para publicar uma aplicação manualmente 
 	docker cp path_to_webapp.war tomcat:/opt/tomcat/webapps
-
 ### Para executar o container com Docker Compose
+
+Editar o arquivo docker-compose.yaml e alterar a versão da imagem. Após alterar, executar:
+
 	docker compose up -d
 
-### Para acessar o gerenciador do Tomcat, criar uma pasta e copiar os arquivos tomcat-users.xml e manager.xml e acessar com o usuário admin e senha admin.
-	mkdir -p /opt/docker/tomcat
-	cp tomcat-users.xml /opt/docker/tomcat/
-	cp manager.xml /opt/docker/tomcat/
-
-## 2) Executar instalando diretamento no host
+## Executar instalando diretamento no host
  
 ### Criar usuário
 	useradd -d /opt/tomcat -c 'Tomcat user' -m -s /bin/false tomcat

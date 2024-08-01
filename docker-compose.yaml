@@ -1,11 +1,11 @@
 services:
   tomcat:
     container_name: tomcat
-    image: tomcat:10.1.7
+    image: tomcat:9.0.90
     hostname: tomcat
     ports:
       - "8080:8080"
       - "8443:8443"
     volumes:
-      - /opt/docker/tomcat/tomcat-users.xml:/opt/tomcat/conf/tomcat-users.xml
-      - /opt/docker/tomcat/manager.xml:/opt/tomcat/conf/Catalina/localhost/manager.xml
+      - ${PWD}/tomcat-users.xml:/opt/tomcat/conf/tomcat-users.xml
+      - ${PWD}/manager.xml:/opt/tomcat/conf/Catalina/localhost/manager.xml
