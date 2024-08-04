@@ -1,14 +1,11 @@
-FROM alpine:3.17
-LABEL maintainer="Andre Sartori <dev@aph.dev.br>"
-RUN apk add --no-cache openjdk17-jre curl
-WORKDIR /opt
-RUN curl -O https://archive.apache.org/dist/tomcat/tomcat-10/v10.1.12/bin/apache-tomcat-10.1.12.tar.gz
-RUN tar zxvf apache*.tar.gz && rm apache*.tar.gz
-RUN ln -s apache* tomcat
-RUN mv ./tomcat/webapps ./tomcat/webapps.dist && mkdir -p ./tomcat/webapps
-ADD ./conf/tomcat.keystore /opt/tomcat/conf/
-ADD ./conf/enableSSL /opt/
-RUN sed -i '/<\/Engine>/ r /opt/enableSSL' /opt/tomcat/conf/server.xml
+FROM alpine:3.20
+LABEL maintainer="Andre Sartori <andre@aph.dev.br>"
+ARG VERSION
+ENV TZ=America/Sao_Paulo
+RUN apk add --no-cache openjdk8-jre tzdata && \
+    wget https://archive.apache.org/dist/tomcat/tomcat-9/v${VERSION}/bin/apache-tomcat-${VERSION}.tar.gz -P /tmp && \
+    tar xf /tmp/apache-tomcat-${VERSION}.tar.gz -C /opt && rm /tmp/apache-tomcat-${VERSION}.tar.gz && \ 
+    mv /opt/apache-tomcat-${VERSION} /opt/tomcat && chmod u+x /opt/tomcat/bin/*.sh
 WORKDIR /opt/tomcat
 EXPOSE 8080 8443
 CMD ["/opt/tomcat/bin/catalina.sh","run"]
