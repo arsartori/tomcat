@@ -9,4 +9,5 @@ RUN apk add --no-cache openjdk8-jre tzdata && \
     chown -R tomcat: /opt/tomcat/ && chmod u+x /opt/tomcat/bin/*.sh
 WORKDIR /opt/tomcat
 EXPOSE 8080 8443
+USER tomcat
 CMD ["/opt/tomcat/bin/catalina.sh","run"]
