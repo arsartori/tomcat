@@ -1,7 +1,7 @@
 services:
   tomcat:
     container_name: tomcat
-    image: tomcat:9.0.88
+    image: arsartori/tomcat:9.0-latest
     hostname: tomcat
     ports:
       - "8080:8080"
