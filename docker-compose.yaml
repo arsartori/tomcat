@@ -1,0 +1,12 @@
+services:
+  tomcat:
+    # Alterar a versão para 9.0-latest, 10.1-latest ou 11.0-latest
+    image: arsartori/tomcat:9.0-latest
+    container_name: tomcat
+    hostname: tomcat
+    ports:
+      - "8080:8080"
+      - "8443:8443"
+    volumes:
+      - ${PWD}/conf/tomcat-users.xml:/opt/tomcat/conf/tomcat-users.xml
+      - ${PWD}/conf/manager.xml:/opt/tomcat/conf/Catalina/localhost/manager.xml
