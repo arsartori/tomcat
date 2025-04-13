@@ -1,6 +1,6 @@
 FROM ubuntu:24.04
 LABEL maintainer="Andre Sartori <andre@aphtec.com.br>"
-ARG VERSION
+ARG VERSION=9.0.100
 ENV TZ=America/Sao_Paulo
 RUN apt update && apt install --no-install-recommends wget tzdata openjdk-8-jre -y && apt clean
 RUN wget https://archive.apache.org/dist/tomcat/tomcat-9/v${VERSION}/bin/apache-tomcat-${VERSION}.tar.gz -P /tmp && \

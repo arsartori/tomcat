@@ -1,0 +1,11 @@
+services:
+  tomcat:
+    container_name: tomcat
+    image: arsartori/tomcat:9.0-latest
+    hostname: tomcat
+    ports:
+      - "8080:8080"
+      - "8443:8443"
+    volumes:
+      - ${PWD}/tomcat-users.xml:/opt/tomcat/conf/tomcat-users.xml
+      - ${PWD}/manager.xml:/opt/tomcat/conf/Catalina/localhost/manager.xml
